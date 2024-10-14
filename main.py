@@ -4,7 +4,6 @@ import random
 verde = "\033[92m"
 reset = "\033[0m"
 
-# Lista de personagens
 personagens_lista = [
     'Alessandro Rossi',
     'Lucca Romano',
@@ -25,7 +24,6 @@ personagens_descricao = [
     '28 anos - Amigável e Atenta',
 ]
 
-# Lista de cenários
 cenarios_lista = [
     "Crime no Salão",
     "Cozinha da Discórdia",
@@ -39,7 +37,6 @@ cenarios_lista = [
     "Última Mensagem"
 ]
 
-# Funções do jogo
 def bem_vindo():
     print(f"{verde}" + "-" * 60)
     print(f"{verde}|{'':^58}|")
@@ -236,17 +233,14 @@ def jogo():
     cenarios()
     cenario_escolhido = int(input("Escolha um cenário (1-10): ")) - 1
     cenario = cenarios_lista[cenario_escolhido]
-    
-    # Determinar a vítima aleatoriamente
-    vitima = random.choice(personagens_lista)
-    personagens_lista.remove(vitima)  # Remover a vítima da lista de suspeitos
 
-    # Gerar dicas
+    vitima = random.choice(personagens_lista)
+    personagens_lista.remove(vitima) 
+
     dicas = gerar_dicas(cenario, personagens_lista)
 
     print(f"\nA vítima foi {vitima}.\n")
 
-    # Mostrar a lista de suspeitos
     print(f"{verde}" + "-" * 60)
     print(f"{verde}|{'SUSPEITOS':^58}|")
     print(f"{verde}" + "-" * 60)
@@ -254,7 +248,6 @@ def jogo():
         print(f"{verde}|{personagem:<58}|")
     print(f"{verde}" + "-" * 60 + f"{reset}")
 
-    # Lógica do jogo
     pontos = 7
     for i, dica in enumerate(dicas):
         print(f"\nDica {i + 1}: {dica.format(suspeito=personagens_lista[0])}")
@@ -264,7 +257,7 @@ def jogo():
         
         if escolha == "1":
             palpite = input("Quem você acha que é o assassino? ")
-            if palpite.lower() == vitima.lower():  # Comparar o palpite com a vítima
+            if palpite.lower() == vitima.lower():
                 print("Você acertou! O assassino é:", vitima)
                 return
             else:
@@ -282,5 +275,4 @@ def jogo():
     
     print("Fim do jogo! A vítima foi:", vitima)
 
-# Iniciar o jogo
 jogo()
