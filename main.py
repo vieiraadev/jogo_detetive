@@ -121,6 +121,28 @@ def exibir_planta():
     for linha in planta:
         print(f"{verde}{linha}{reset}")
 
+def arma(vitima):
+    green = "\033[92m"
+    reset = "\033[0m" 
+    gun_art = r"""
+|-----------------------------------------------------------------------|
+|   ____________________________________         ---        __          |
+|  |                                    |===--  --    --   --    --     |
+|  |           ________________________ |        ---               --   | 
+|  |       |  |                                                         |
+|  |     |____|                                                         |  
+|  |     |                                                              |
+|  |     |                                                              |
+|  |     |                       A VÍTIMA FOI: {vitima}                 |
+|  |     |                                                              |
+|  |     |                                                              |
+|  |     |                                                              |
+|  |     |                                                              |
+|  |_____|                                                              |
+|-----------------------------------------------------------------------|
+"""
+    print(green + gun_art.replace("{vitima}", vitima) + reset)
+
 def cenarios():
     print(f"{verde}" + "-" * 60)
     print(f"{verde}|{'CENÁRIOS DISPONÍVEIS':^58}|")
@@ -238,9 +260,7 @@ def jogo():
     personagens_lista.remove(vitima) 
 
     dicas = gerar_dicas(cenario, personagens_lista)
-
-    print(f"\nA vítima foi {vitima}.\n")
-
+    arma(vitima)
     print(f"{verde}" + "-" * 60)
     print(f"{verde}|{'SUSPEITOS':^58}|")
     print(f"{verde}" + "-" * 60)
