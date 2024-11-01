@@ -138,14 +138,14 @@ def gerar_dicas(cenario, assassino):
     dicas_por_cenario = {
         "Crime no Salão": [
             "{suspeito} estava com uma arma ou faca.",
-            "{suspeito} estava no quarto 5 ou quarto 6.",
+            "{suspeito} estava no quarto 5 ou não estava no quarto 5",
             "Se {suspeito} estava na casa, então ele(a) estava na sala de estar.",
-            "{assassino} estava fugindo da casa e estava correndo muito.",
+            "{assassino} estava presente na cena do crime ou não estava presente, mas ainda assim tem alguma conexão com o crime",
             "{suspeito} estava dormindo e roncando.",
-            "{suspeito} estava falando com o cozinheiro ou com a faxineira.",
+            "O {suspeito} estava escondido no quarto e ao mesmo tempo não estava escondido em nenhum lugar da casa.",
             "{suspeito} estava com uma acompanhante na sala de entretenimento ou na suíte master",
-            "{suspeito} estava no salão e muito nervoso no momento da morte.",
-            "{assassino} estava com sangue em suas roupas se e somente se estivesse com uma faca no bolso.",
+            "{suspeito} estava sozinho no quarto, mas ao mesmo tempo não estava sozinho no quarto...",
+            "{assassino}  tinha um álibi ou ele não tinha um álibi, mas suas ações chamaram a atenção naquela noite.",
             "{suspeito} estava tendo um coma alcoólico no deck externo ou no corredor.",
         ],
         "Cozinha da Discórdia": [
