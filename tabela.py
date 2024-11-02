@@ -1,4 +1,5 @@
 import ttg
+
 print("tabelas verdades do cenário 1")
 print("--------------------------------------")
 #tabela verdade Contingência
