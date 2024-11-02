@@ -2,62 +2,53 @@ import ttg
 
 print("tabelas verdades do cenário 1")
 print("--------------------------------------")
-#tabela verdade Contingência
-print("{suspeito} estava com uma arma ou faca.")
-table = ttg.Truths(['p', 'q'], ['p or q'])
-print(table)
-print("--------------------------------------")
 #tabela verdade tautologia
-print("{suspeito} estava no quarto 5 ou não estava no quarto 5")
-table = ttg.Truths(['p'], ['p or not p'])
+print("v  v ~v : Elena estava na cozinha ou Elena não estava na cozinha")
+table = ttg.Truths(['v'], ['v or not v'])
 print(table)
 print("--------------------------------------")
 #tabela verdade Contingência
-print("Se {suspeito} estava na casa, então ele(a) estava na sala de estar.")
-table = ttg.Truths(['p', 'q'], ['not p or q'])
-print(table)
+print("r→¬s: Se Sofia estava na sala de entretenimento, então Chiara não matou a vítima.") 
+tabela_verdade = ttg.Truths(['r', 's'], ['r implies not s'])
+print(tabela_verdade)
 print("--------------------------------------")
 #tabela verdade Contingência
-print("{assassino} estava fugindo da casa e estava correndo muito.")
-table = ttg.Truths(['p', 'q'], ['p and q'])
-print(table)
+print("s→q: Se Chiara matou a vítima, então Lucca estava com uma faca. ") 
+tabela_verdade = ttg.Truths(['s', 'q'], ['s implies q'])
+print(tabela_verdade)
 print("--------------------------------------")
 #tabela verdade Contingência
-print("{suspeito} estava dormindo e roncando.")
-table = ttg.Truths(['p', 'q'], ['p and q'])
-print(table)
+print("P->t: Se Alessandro estava no salão, então Matteo tinha um motivo para matar a vítima. ") 
+tabela_verdade = ttg.Truths(['P', 'T'], ['P implies T'])
+print(tabela_verdade)
 print("--------------------------------------")
 #tabela verdade Contingência
-print(
-    "O {suspeito} estava escondido no quarto e ao mesmo tempo não estava escondido em nenhum lugar da casa."
-)
-table = ttg.Truths(['p', 'q'], ['p and not q'])
-print(table)
-print("--------------------------------------")
-#tabela verdade Contingência
-print(
-    "{suspeito} estava com uma acompanhante na sala de entretenimento ou na suíte master"
-)
-table = ttg.Truths(['p', 'q'], ['p or q'])
-print(table)
+print("¬r→¬v: Se Sofia não estava na sala de entretenimento, então Elena não estava na cozinha.  ") 
+tabela_verdade = ttg.Truths(['r', 'v'], ['not r implies not v'])
+print(tabela_verdade)
 print("--------------------------------------")
 #tabela verdade contradição
-print(
-    "{suspeito} estava sozinho no quarto, mas ao mesmo tempo não estava sozinho no quarto..."
-)
-table = ttg.Truths(['p'], ['p and not p'])
-print(table)
+print(" U ^ ~U : Bianca estava sozinha no corredor e Bianca não estava sozinha no corredor. (falsa não ajuda em nada)  ") 
+tabela_verdade = ttg.Truths(['U'], ['U and not U'])
+print(tabela_verdade)
 print("--------------------------------------")
-#tabela verdade tautologia
-print(
-    "O {assassino}  estava presente na cena do crime ou não estava presente, mas ainda assim tem alguma conexão com o crime."
-)
-table = ttg.Truths(['p'], ['p or not p'])
-print(table)
+#tabela verdade Contingência
+print(" t→s : Se Matteo tinha um motivo, então Chiara matou a vítima.  ") 
+tabela_verdade = ttg.Truths(['T', 'S'], ['T implies S'])
+print(tabela_verdade)
 print("--------------------------------------")
-#tabela verdade tautologia
-print(
-    "{assassino}  tinha um álibi ou ele não tinha um álibi, mas suas ações chamaram a atenção naquela noite."
-)
-table = ttg.Truths(['p'], ['p or not p'])
-print(table)
+#tabela verdade Contingência
+print(" ¬p→s : Se Alessandro não estava no salão, então Chiara matou a vítima.  ") 
+tabela_verdade = ttg.Truths(['P', 'S'], ['not P implies S'])
+print(tabela_verdade)
+print("--------------------------------------")
+#tabela verdade Contingência
+print("r→v: Se Sofia estava na sala de entretenimento, então Elena estava na cozinha. ")
+tabela_verdade = ttg.Truths(['r', 'v'], ['r implies v'])
+print(tabela_verdade)
+print("--------------------------------------")
+#tabela verdade Contingência
+print("v→ ~p: Se Elena estava na cozinha, então Alessandro não estava no salão. ")
+tabela_verdade = ttg.Truths(['v', 'p'], ['v implies not p'])
+print(tabela_verdade)
+
