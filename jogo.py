@@ -24,17 +24,6 @@ personagens_descricao = [
     "28 anos - Amigável e Atenta",
 ]
 
-cenarios_lista = [
-    "Crime no Salão",
-    "Cozinha da Discórdia",
-    "Quarto do Suspeito",
-]
-
-assassinos_por_cenario = {
-    "Crime no Salão": "Chiara Vitale",
-    "Cozinha da Discórdia": "Lucca Romano",
-    "Quarto do Suspeito": "Elena Capello",
-}
 
 
 def bem_vindo():
@@ -58,7 +47,7 @@ def descricao():
     print(f"{vermelho}|{'Agora, todos os presentes têm motivos ocultos e':^58}|")
     print(f"{vermelho}|{'segredos que podem levar a uma investigação profunda.':^58}|")
     print(
-        f"{vermelho}|{'Seu dever é investigar, encontrar o assassino e a arma.':^58}|"
+        f"{vermelho}|{'Seu dever é investigar, encontrar o assassino':^58}|"
     )
     print(f"{vermelho}|{'Contamos com você para desvendar este mistério!':^58}|")
     print(f"{vermelho}" + "-" * 60 + f"{reset}")
@@ -129,18 +118,10 @@ def exibir_planta():
         print(f"{vermelho}{linha}{reset}")
 
 
-def cenarios():
-    print(f"{vermelho}" + "-" * 60)
-    print(f"{vermelho}|{'CENÁRIOS DISPONÍVEIS':^58}|")
-    print(f"{vermelho}" + "-" * 60)
-    for i, cenario in enumerate(cenarios_lista, start=1):
-        print(f"{vermelho}|{f'{i}. {cenario}':<58}|")
-    print(f"{vermelho}" + "-" * 60 + f"{reset}")
 
-
-def gerar_dicas(cenario, assassino):
-    dicas_por_cenario = {
-        "Crime no Salão": [
+def gerar_dicas(cenario):
+    dicas_por_cenario = [
+        [
             "Elena estava na cozinha ou Elena não estava na cozinha.",
             "Se Sofia estava na sala de entretenimento, então Chiara não matou a vítima.",
             "Se Chiara matou a vítima, então Lucca estava com uma faca.",
@@ -150,22 +131,22 @@ def gerar_dicas(cenario, assassino):
             "Se Matteo tinha um motivo, então Chiara matou a vítima.",
             "Se Alessandro não estava no salão, então Chiara matou a vítima.",
             "Se Sofia estava na sala de entretenimento, então Elena estava na cozinha.",
-            "Se Elena estava na cozinha, então Alessandro não estava no salão.",
+            "Se Elena estava na cozinha, então Alessandro não estava no salão."
         ],
-        "Cozinha da Discórdia": [
+        [
             "Chiara estava no salão no momento do crime ou Chiara não estava no salão no momento do crime.",
             "Se Sofia estava na sala de entretenimento, então Lucca não matou a vítima.",
             "Se Lucca matou a vítima, então Lucca estava com uma faca.",
             "Se Alessandro estava no salão, então Matteo tinha um motivo para matar a vítima.",
             "Se Sofia não estava na sala de entretenimento, então Chiara não estava na cozinha.",
-            "Se Bianca estava sozinha no corredor, então Bianca não está sozinha no corredor.",
+            "Bianca estava sozinha no corredor e Bianca não estava sozinha no corredor.",
             "Se Matteo tinha um motivo, então Lucca matou a vítima.",
             "Se Alessandro não estava no salão, então Lucca matou a vítima.",
             "Se Sofia estava na sala de entretenimento, então Chiara estava na cozinha.",
-            "Se Chiara estava na cozinha, então Alessandro não estava no salão.",
+            "Se Chiara estava na cozinha, então Alessandro não estava no salão."
         ],
-        "Quarto do Suspeito": [
-            "Alessandro ou Sofia estavam no salão no momento do crime.",
+        [
+            "Sofia estava na cozinha ou Sofia não estava na cozinha.",
             "Se Chiara estava na sala de entretenimento, então Elena não matou a vítima.",
             "Se Elena matou a vítima, então Lucca estava com uma faca.",
             "Se Alessandro estava no salão, então Matteo tinha um motivo para matar a vítima.",
@@ -174,20 +155,15 @@ def gerar_dicas(cenario, assassino):
             "Se Matteo tinha um motivo, então Elena matou a vítima.",
             "Se Alessandro não estava no salão, então Elena matou a vítima.",
             "Se Chiara estava na sala de entretenimento, então Sofia estava na cozinha.",
-            "Se Sofia estava na cozinha, então Alessandro não estava no salão.",
-        ],
-    }
-
-    dicas = dicas_por_cenario[cenario]
-    dicas_formatadas = [
-        dica.format(
-            suspeito=random.choice([p for p in personagens_lista if p != assassino]),
-            assassino=assassino,
-        )
-        for dica in dicas
+            "Se Sofia estava na cozinha, então Alessandro não estava no salão."
+        ]
     ]
-    return dicas_formatadas
 
+    cenario = cenario - 1
+    return dicas_por_cenario[cenario]
+
+
+assassinos = [4, 2, 7]
 
 def imprimir_linha(texto):
     comprimento_texto = len(texto)
@@ -198,11 +174,10 @@ def imprimir_linha(texto):
 pontuacao_total = 0
 
 
-def pos_jogo_acerto(assassino):
+def pos_jogo_acerto():
     global pontuacao_total
     print(f"{vermelho}" + "-" * 60)
     print(f"{vermelho}|{'Fim de Jogo!':^58}|")
-    print(f"{vermelho}|{f'O assassino era {assassino}':^58}|" f"{reset}")
     print(f"{vermelho}|{f'Pontuação acumulada: {pontuacao_total}':^58}|{reset}")
     print(f"{vermelho}" + "-" * 60)
     print(f"{reset}1. Jogar novamente\n2. Sair")
@@ -220,7 +195,7 @@ def pos_jogo_acerto(assassino):
         exit()
 
 
-def pos_jogo_errado(s):
+def pos_jogo_errado():
     global pontuacao_total
     print(f"{vermelho}" + "-" * 60)
     print(f"{vermelho}|{'Fim de Jogo!':^58}|")
@@ -264,27 +239,10 @@ def jogo():
         exibir_planta()
         personagens()
 
-        cenarios()
-        cenario_escolhido = int(input("Escolha um cenário (1-3): ")) - 1
-        cenario = cenarios_lista[cenario_escolhido]
-        assassino = assassinos_por_cenario[cenario]
-        
-        vitima = random.choice([p for p in personagens_lista if p != assassino])
-        personagens_lista.remove(vitima)
+        cenario_escolhido = random.randint(1, 3)
 
-        dicas = gerar_dicas(cenario, assassino)
+        dicas = gerar_dicas(cenario_escolhido)
 
-        print(f"{vermelho}" + "-" * 60)
-        if vitima in [
-            "Sofia Bellini",
-            "Chiara Vitale",
-            "Bianca Moretti",
-            "Elena Capello",
-        ]:
-            print(f"{vermelho}|{f'{vitima} FOI ASSASSINADA!':^58}|")
-        else:
-            print(f"{vermelho}|{f'{vitima} FOI ASSASSINADO!':^58}|")
-        print(f"{vermelho}" + "-" * 60)
 
         print(f"{vermelho}" + "-" * 60)
         print(f"{vermelho}|{'SUSPEITOS':^58}|")
@@ -295,11 +253,8 @@ def jogo():
         print(f"{vermelho}" + "-" * 60 + f"{reset}")
 
         pontos = 10
-
-        for i, dica in enumerate(dicas):
-            imprimir_linha(
-                f"\nDica {i + 1}: {dica.format(suspeito=personagens_lista[i % len(personagens_lista)], assassino=assassino)}"
-            )
+        for i in range(10):
+            print(dicas[i])
 
             while True:
                 print(f"{vermelho}1. Adivinhar\n2. Próxima dica\n3. Sair{reset}")
@@ -307,25 +262,24 @@ def jogo():
 
                 if escolha == "1":
                     try:
-                        palpite_index = (
+                        personagens()
+                        palpite = (
                             int(input("Digite o número correspondente ao suspeito: "))
-                            - 1
+
                         )
-                        if 0 <= palpite_index < len(personagens_lista):
-                            palpite = personagens_lista[palpite_index]
-    
-                            if palpite.strip() == assassino.strip():
+                        if palpite in (1,2,3,4,5,6,7) :
+                            if palpite == assassinos[cenario_escolhido - 1]:
                                 print(
                                     f"Parabéns! Você acertou e ganhou {pontos} pontos."
                                 )
                                 pontuacao_total += pontos
-                                pos_jogo_acerto(assassino)
+                                pos_jogo_acerto()
                                 return
                             else:
                                 print(
-                                    f"Você errou! O assassino era {assassino}. Você não pontuou nessa."
+                                    f"Você errou! Você não pontuou nessa."
                                 )
-                                pos_jogo_errado(palpite)
+                                pos_jogo_errado()
                                 return
                         else:
                             print("Número inválido. Tente novamente.")
@@ -336,12 +290,11 @@ def jogo():
                     pontos -= 1
                     if pontos <= 0:
                         print("Você não tem mais pontos para continuar. Fim de jogo.")
-                        pos_jogo_acerto(assassino)
+                        pos_jogo_errado()
                         return
                     break
 
                 elif escolha == "3":
-                    pos_jogo_acerto(assassino)
                     return
 
                 else:
