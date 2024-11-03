@@ -1,6 +1,6 @@
 import ttg
 
-print("tabelas verdades do cenário 1")
+print("tabelas verdades dos cenários")
 print("--------------------------------------")
 #tabela verdade tautologia
 print("v  v ~v : Elena estava na cozinha ou Elena não estava na cozinha")
