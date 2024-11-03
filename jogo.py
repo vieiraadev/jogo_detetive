@@ -28,9 +28,13 @@ cenarios_lista = [
     "Crime no Salão",
     "Cozinha da Discórdia",
     "Quarto do Suspeito",
-    "Deck da Verdade",
-    "Corredor Sombrio",
 ]
+
+assassinos_por_cenario = {
+    "Crime no Salão": "Chiara Vitale",
+    "Cozinha da Discórdia": "Lucca Romano",
+    "Quarto do Suspeito": "Elena Capello",
+}
 
 
 def bem_vindo():
@@ -137,69 +141,44 @@ def cenarios():
 def gerar_dicas(cenario, assassino):
     dicas_por_cenario = {
         "Crime no Salão": [
-            "{suspeito} estava com uma arma ou faca.",
-            "{suspeito} estava no quarto 5 ou não estava no quarto 5",
-            "Se {suspeito} estava na casa, então ele(a) estava na sala de estar.",
-            "{assassino} estava presente na cena do crime ou não estava presente, mas ainda assim tem alguma conexão com o crime",
-            "{suspeito} estava dormindo e roncando.",
-            "O {suspeito} estava escondido no quarto e ao mesmo tempo não estava escondido em nenhum lugar da casa.",
-            "{suspeito} estava com uma acompanhante na sala de entretenimento ou na suíte master",
-            "{suspeito} estava sozinho no quarto, mas ao mesmo tempo não estava sozinho no quarto...",
-            "{assassino}  tinha um álibi ou ele não tinha um álibi, mas suas ações chamaram a atenção naquela noite.",
-            "{suspeito} estava tendo um coma alcoólico no deck externo ou no corredor.",
+            "Elena estava na cozinha ou Elena não estava na cozinha.",
+            "Se Sofia estava na sala de entretenimento, então Chiara não matou a vítima.",
+            "Se Chiara matou a vítima, então Lucca estava com uma faca.",
+            "Se Alessandro estava no salão, então Matteo tinha um motivo para matar a vítima.",
+            "Se Sofia não estava na sala de entretenimento, então Elena não estava na cozinha.",
+            "Bianca estava sozinha no corredor e Bianca não estava sozinha no corredor.",
+            "Se Matteo tinha um motivo, então Chiara matou a vítima.",
+            "Se Alessandro não estava no salão, então Chiara matou a vítima.",
+            "Se Sofia estava na sala de entretenimento, então Elena estava na cozinha.",
+            "Se Elena estava na cozinha, então Alessandro não estava no salão.",
         ],
         "Cozinha da Discórdia": [
-            "{suspeito} estava na piscina do deck externo ou no quarto 5.",
-            "{suspeito} estava extremamente nervoso e aflito na dispensa da cozinha.",
-            "{assassino} estava deixando pegadas de sangue e estava correndo.",
-            "{suspeito} estava comendo no salão principal ou no deck externo.",
-            "{suspeito} estava vendo o por do sol fora da casa se e somente se o por do sol estivesse bonito.",
-            "{suspeito} estava no quarto 4 ou no quarto 2.",
-            "Se {suspeito} estava na suíte master, então ele estava tomando banho.",
-            "{assassino} estava subornando ou ameaçando o cozinheiro.",
-            "{suspeito} estava com uma faca e estava nervoso.",
-            "Se {suspeito} estava na casa, então ele(a) estava no corredor dos quartos.",
+            "Chiara estava no salão no momento do crime ou Chiara não estava no salão no momento do crime.",
+            "Se Sofia estava na sala de entretenimento, então Lucca não matou a vítima.",
+            "Se Lucca matou a vítima, então Lucca estava com uma faca.",
+            "Se Alessandro estava no salão, então Matteo tinha um motivo para matar a vítima.",
+            "Se Sofia não estava na sala de entretenimento, então Chiara não estava na cozinha.",
+            "Se Bianca estava sozinha no corredor, então Bianca não está sozinha no corredor.",
+            "Se Matteo tinha um motivo, então Lucca matou a vítima.",
+            "Se Alessandro não estava no salão, então Lucca matou a vítima.",
+            "Se Sofia estava na sala de entretenimento, então Chiara estava na cozinha.",
+            "Se Chiara estava na cozinha, então Alessandro não estava no salão.",
         ],
         "Quarto do Suspeito": [
-            "{assassino} estava escondido no armário do quarto e tinha sangue em suas roupas.",
-            "{suspeito} estava em uma reunião online ou em chamada de vídeo com a amante.",
-            "Se {suspeito} estava na cozinha, então ele estava conversando com o cozinheiro.",
-            "{suspeito} estava deitado no deck externo e estava admirando a vista.",
-            "{suspeito} estava com uma tesoura suja de sangue e estava em choque.",
-            "{suspeito} estava tomando banho se e somente se estivesse sujo.",
-            "{suspeito} estava com um canivete ou uma faca no bolso.",
-            "{assassino} estava com uma arma silenciada e com carregadores para a arma.",
-            "{suspeito} estava na sala de entretenimento jogando videogame ou assistindo um filme.",
-            "{suspeito} estava conversando com a faxineira ou falando sozinho.",
-        ],
-        "Deck da Verdade": [
-            "{suspeito} estava no quarto 6 arrumando suas roupas e o quarto.",
-            "{suspeito} estava com as mãos e a camiseta ensanguentadas.",
-            "{suspeito} estava defecando ou urinando no quarto 5.",
-            "{suspeito} estava em seu carro usando drogas ou bebidas alcoólicas.",
-            "{suspeito} estava falando com sua esposa ou filhos por telefone.",
-            "Se {assassino} estava no deck, então deixou pegadas de sangue.",
-            "{suspeito} estava na cozinha procurando bebidas e petiscos.",
-            "{suspeito} estava desesperado(a) e muito arrependido(a) de algo.",
-            "{suspeito} estava no salão principal se e somente se tivesse comida.",
-            "{assassino} estava fugindo para fora da casa ou se escondendo.",
-        ],
-        "Corredor Sombrio": [
-            "{suspeito} estava fugindo e correndo no corredor sombrio.",
-            "{assassino} estava com uma faca escondida no casaco ou na calça.",
-            "Se {suspeito} estava no quarto 2, então ele(a) estava vomitando no banheiro.",
-            "{suspeito} estava tendo um ataque de ansiedade e panico.",
-            "{suspeito} estava fazendo embaixadinhas ou estava na piscina do deck.",
-            "{suspeito} estava brigando com a faxineira e com o cozinheiro.",
-            "{assassino} estava fugindo e acelerando muito seu carro.",
-            "{suspeito} estava dormindo no quarto 5 ou no quarto 6.",
-            "{suspeito} estava ouvindo musica alta se e somente se estivesse na suíte master.",
-            "{suspeito} estava com uma arma e uma faca.",
+            "Alessandro ou Sofia estavam no salão no momento do crime.",
+            "Se Chiara estava na sala de entretenimento, então Elena não matou a vítima.",
+            "Se Elena matou a vítima, então Lucca estava com uma faca.",
+            "Se Alessandro estava no salão, então Matteo tinha um motivo para matar a vítima.",
+            "Se Chiara não estava na sala de entretenimento, então Sofia não estava na cozinha.",
+            "Se Bianca estava sozinha no corredor, então Alessandro estava no salão.",
+            "Se Matteo tinha um motivo, então Elena matou a vítima.",
+            "Se Alessandro não estava no salão, então Elena matou a vítima.",
+            "Se Chiara estava na sala de entretenimento, então Sofia estava na cozinha.",
+            "Se Sofia estava na cozinha, então Alessandro não estava no salão.",
         ],
     }
 
     dicas = dicas_por_cenario[cenario]
-
     dicas_formatadas = [
         dica.format(
             suspeito=random.choice([p for p in personagens_lista if p != assassino]),
@@ -207,7 +186,7 @@ def gerar_dicas(cenario, assassino):
         )
         for dica in dicas
     ]
-    return random.sample(dicas_formatadas, 10)
+    return dicas_formatadas
 
 
 def imprimir_linha(texto):
@@ -285,17 +264,13 @@ def jogo():
         exibir_planta()
         personagens()
 
-        assassino = random.choice(personagens_lista)
-        vitima = random.choice(personagens_lista)
-
-        while vitima == assassino:
-            vitima = random.choice(personagens_lista)
-
-        personagens_lista.remove(vitima)
-
         cenarios()
-        cenario_escolhido = int(input("Escolha um cenário (1-5): ")) - 1
+        cenario_escolhido = int(input("Escolha um cenário (1-3): ")) - 1
         cenario = cenarios_lista[cenario_escolhido]
+        assassino = assassinos_por_cenario[cenario]
+        
+        vitima = random.choice([p for p in personagens_lista if p != assassino])
+        personagens_lista.remove(vitima)
 
         dicas = gerar_dicas(cenario, assassino)
 
@@ -338,8 +313,7 @@ def jogo():
                         )
                         if 0 <= palpite_index < len(personagens_lista):
                             palpite = personagens_lista[palpite_index]
-
-                            # Comparar com o assassino sem removê-lo antes do término
+    
                             if palpite.strip() == assassino.strip():
                                 print(
                                     f"Parabéns! Você acertou e ganhou {pontos} pontos."
