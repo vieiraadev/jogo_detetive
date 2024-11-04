@@ -4,8 +4,8 @@ print("tabelas verdades dos cenários")
 print("--------------------------------------")
 #tabela verdade tautologia
 print("v  v ~v : Elena estava na cozinha ou Elena não estava na cozinha")
-table = ttg.Truths(['v'], ['v or not v'])
-print(table)
+tabela_verdade = ttg.Truths(['v'], ['v or not v'])
+print(tabela_verdade)
 print("--------------------------------------")
 #tabela verdade Contingência
 print("r→¬s: Se Sofia estava na sala de entretenimento, então Chiara não matou a vítima.") 
@@ -50,5 +50,10 @@ print("--------------------------------------")
 #tabela verdade Contingência
 print("v→ ~p: Se Elena estava na cozinha, então Alessandro não estava no salão. ")
 tabela_verdade = ttg.Truths(['v', 'p'], ['v implies not p'])
+print(tabela_verdade)
+#tabela-verdade com uma única solução verdadeira
+print("--------------------------------------")
+print("(s and not p) and q and r and (v and not t)")
+tabela_verdade = ttg.Truths(['r', 's', 'q', 'p', 't', 'v'], ['(s and not p) and q and r and (v and not t)'])
 print(tabela_verdade)
 
