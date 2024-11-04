@@ -53,7 +53,7 @@ tabela_verdade = ttg.Truths(['v', 'p'], ['v implies not p'])
 print(tabela_verdade)
 #tabela-verdade com uma única solução verdadeira
 print("--------------------------------------")
-print("(s and not p) and q and r and (v and not t)")
+print("( ( s ∧ ¬p ) ∧ q ∧ r ∧ ( v ∧ ¬t)")
 tabela_verdade = ttg.Truths(['r', 's', 'q', 'p', 't', 'v'], ['(s and not p) and q and r and (v and not t)'])
 print(tabela_verdade)
 
